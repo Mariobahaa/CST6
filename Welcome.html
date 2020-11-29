@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Welcome</title>
+    </head>
+    <body>
+        <script src= "Cookies.js"></script>
+        <div>
+        <img src="./Assets/1.jpg" id="gen">
+        <span>
+        <label id="name"> Username </label>
+        <label id="vis"> 0 </label>
+        </span>
+        </div>
+        <script>
+        var color = getCookie("color");
+        var name = getCookie("username");
+        document.getElementById("name").innerHTML= name.fontcolor(color);
+        //document.getElementById("name").fontColor= color;
+        if(getCookie("gender")=="female")
+        {
+            document.getElementById("gen").src = "./Assets/2.jpg";
+        }
+        var visits = 0;
+        if(hasCookie("visits")) 
+        {
+            visits = parseInt(getCookie("visits"));
+            
+        }
+        visits++;
+        var d = new Date();
+        d.setMonth(d.getMonth()+1);
+        setCookie("visits",visits,d);
+        document.getElementById("vis").innerHTML= visits + " visits";
+        </script>
+    </body>
+</html>

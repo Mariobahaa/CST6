@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Cookies</title>
+    </head>
+    <body>
+        <script src="Cookies.js"></script>
+        
+        <label>Enter your username: </label>
+        <input type="text" name="username" id="username">
+        
+        <br>
+        <br>
+        <br>
+        
+        <label>Enter your age: </label>
+        <input type="text" name="age" id="age">
+        
+        
+        <br>
+        <br>
+        <br>
+        
+        <label>Gender: </label>
+        <input type="radio" name="gender" value="male" id="r1">
+        <label for="r1"><img src="./Assets/1.jpg" ></label>
+        <input type="radio" name="gender" value="female" id="r2">
+        <label for="r2"><img src="./Assets/2.jpg" ></label>
+        
+        <br>
+        <br>
+        <br>
+        
+        <label> Choose your favourite color:  </label>
+        <select id="sel">
+             <option value="red"> Red </option>
+             <option value="green"> Green </option>
+             <option value="blue"> Blue </option>
+        </select>
+        
+        <br>
+        <br>
+        <br>
+        
+        <input type="button" value="Register" onclick="Register()">
+        <script>
+            function Register()
+            {
+                if(hasCookie("username")){
+                    deleteCookie("visits");
+                }
+                var username = document.getElementById("username").value;
+                var age = document.getElementById("age").value;
+                var rd;
+                if(document.getElementById("r1").checked) {
+                rd = document.getElementById("r1").value;
+                }
+                else {
+                rd = document.getElementById("r2").value;
+                }
+                gender = rd;
+                var color = document.getElementById("sel").value;
+                
+                    var d = new Date();
+                    d.setMonth(d.getMonth()+1);
+                    setCookie("username",encodeURI(username),d);
+                    
+                    setCookie("age",age);
+                    
+                    setCookie("gender",gender,d);
+                    
+                    setCookie("color",color);
+                    
+                    location.replace("Welcome.html");
+            }
+
+        
+        </script>
+    </body>
+</html>
